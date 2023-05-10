@@ -3,6 +3,7 @@ const path = require("path");
 
 async function copyDirectory(sourceDirectory, destinationDirectory) {
   try {
+    await fs.rmdir(destinationDirectory, { recursive: true });
     await fs.mkdir(destinationDirectory);
   } catch (error) {
     if (error.code !== "EEXIST") throw error;
