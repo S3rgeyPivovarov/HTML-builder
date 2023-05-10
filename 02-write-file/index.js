@@ -13,9 +13,14 @@ inputLine.on("line", (input) => {
     console.log("Удачи)");
     inputLine.close();
   } else {
-    fs.appendFile("textTask2.txt", input + "\n", (err) => {
+    fs.appendFile("02-write-file/textTask2.txt", input + "\n", (err) => {
       if (err) throw err;
       console.log("Текст добавлен text.txt");
     });
   }
+});
+
+process.on("SIGINT", function () {
+  console.log("Удачи");
+  process.exit();
 });
